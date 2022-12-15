@@ -1,0 +1,38 @@
+[
+    {
+      "_id": 1,
+      "img": "https://i.ibb.co/kJLxCbZ/1.png",
+      "product_name": "Car Break",
+      "price": "20.00"
+    },
+    {
+      "_id": 2,
+      "img": "https://i.ibb.co/G9MZsHR/2.png",
+      "product_name": "Car Break with Hydraulic",
+      "price": "25.00"
+    },
+    {
+      "_id": 3,
+      "img": "https://i.ibb.co/qkLKY3D/3.png",
+      "product_name": "Car Air Filter",
+      "price": "20.00"
+    },
+    {
+      "_id": 4,
+      "img": "https://i.ibb.co/BBnVKCc/4.png",
+      "product_name": "Car Engine Battery",
+      "price": "30.00"
+    },
+    {
+      "_id": 5,
+      "img": "https://i.ibb.co/McBk2pT/5.png",
+      "product_name": "Car Tare",
+      "price": "55.00"
+    },
+    {
+      "_id": 6,
+      "img": "https://i.ibb.co/0Xd3q9y/6.png",
+      "product_name": "Car Engine Plug",
+      "price": "40.00"
+    }
+  ]
