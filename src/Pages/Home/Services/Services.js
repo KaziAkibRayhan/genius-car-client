@@ -4,7 +4,7 @@ import ServiceCard from "./ServiceCard";
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -15,7 +15,7 @@ const Services = () => {
         <h2 className="text-5xl text-semibold">Our Service Area</h2>
         <p>
           the majority have suffered alteration in some form, by injected
-          humour, or randomised <br /> words which don't look even slightly
+          humour, or randomized <br /> words which don't look even slightly
           believable.
         </p>
       </div>

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
+import TeamCard from "./TeamCard";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
+const Teams = () => {
+  const [teams, setTeams] = useState([]);
   useEffect(() => {
-    fetch("products.json")
+    fetch("teams.json")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setTeams(data));
   }, []);
   return (
     <div>
       <div className="text-center mt-10 capitalize mb-4">
-        <p className="text-2xl font-bold text-orange-600">Popular Products</p>
-        <h2 className="text-5xl text-semibold">Browse Our Products</h2>
+        <p className="text-2xl font-bold text-orange-600">Team</p>
+        <h2 className="text-5xl text-semibold">Meet Our Team</h2>
         <p>
           the majority have suffered alteration in some form, by injected
           humour, or randomized <br /> words which don't look even slightly
@@ -20,15 +20,15 @@ const Products = () => {
         </p>
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
+        {teams.map((team) => (
+          <TeamCard key={team._id} team={team}></TeamCard>
         ))}
       </div>
       <div className="text-center my-10">
-        <button className="btn btn-outline btn-error">More Products</button>
+        <button className="btn btn-outline btn-error">More Services</button>
       </div>
     </div>
   );
 };
 
-export default Products;
+export default Teams;
