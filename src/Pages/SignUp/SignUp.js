@@ -2,12 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { FcGoogle } from "react-icons/fc";
-import { GoogleAuthProvider } from "firebase/auth";
+import { setAuthToken } from "../../api/auth";
 
 const SignUp = () => {
-  const { createUser, googleSignIn } = useContext(AuthContext);
-  const providerGoogle = new GoogleAuthProvider();
+  const { createUser } = useContext(AuthContext);
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,17 +15,18 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setAuthToken(user);
       })
       .catch((err) => console.error(err));
   };
-  const handleGoogleLogIn = () => {
-    googleSignIn(providerGoogle)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((err) => console.error(err));
-  };
+  // const handleGoogleLogIn = () => {
+  //   googleSignIn(providerGoogle)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
   return (
     <div className="hero w-full py-20">
       <div className="hero-content gap-20 grid md:grid-cols-2 flex-col lg:flex-row">
@@ -86,17 +85,17 @@ const SignUp = () => {
               Login
             </Link>
           </p>
-          <p className="text-center">
+          {/* <p className="text-center">
             <small>Or Sign Up with</small>
-          </p>
-          <div className="flex justify-center mt-2">
+          </p> */}
+          {/* <div className="flex justify-center mt-2">
             <button
               onClick={handleGoogleLogIn}
               className="p-2 bg-slate-200 rounded-full"
             >
               <FcGoogle className="text-2xl" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

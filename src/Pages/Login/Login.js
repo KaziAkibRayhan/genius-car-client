@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signInWithEmailPass } = useContext(AuthContext);
@@ -17,13 +18,13 @@ const Login = () => {
     signInWithEmailPass(email, password)
       .then((result) => {
         const user = result.user;
+
         const currentUser = {
           email: user.email,
         };
-
         console.log(currentUser);
         // get json web token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://genius-car-server-iota-silk.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -36,6 +37,7 @@ const Login = () => {
             localStorage.setItem("genius-token", data.token);
             navigate(from, { replace: true });
           });
+          
       })
       .catch((err) => console.error(err));
   };
@@ -72,7 +74,7 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a href="/" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>
@@ -87,6 +89,7 @@ const Login = () => {
               Sign Up
             </Link>
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
