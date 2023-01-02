@@ -20,8 +20,8 @@ const Teams = () => {
         </p>
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {teams.map((team) => (
-          <TeamCard key={team._id} team={team}></TeamCard>
+        {teams.map((team, idx) => (
+          <TeamCard key={idx} team={team}></TeamCard>
         ))}
       </div>
       <div className="text-center my-10">

@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 
@@ -28,6 +29,11 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, providerGoogle);
   };
 
+  const logOut = () => {
+    localStorage.removeItem("genius-token");
+    return signOut(auth);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("on auth state changed", currentUser);
@@ -35,7 +41,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     });
     return () => unsubscribe();
-  }, []);
+  }, [user]);
 
   const authInfo = {
     user,
@@ -43,6 +49,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signInWithEmailPass,
     googleSignIn,
+    logOut,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
